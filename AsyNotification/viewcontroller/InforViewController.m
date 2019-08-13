@@ -27,13 +27,8 @@ NSString *const kNotificationName = @"kNotificationName";
     
     [[HLNotificationCenter defaultCenter] addObserver:self selector:@selector(updateInfo:) name:kNotificationName object:nil];
     
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    [[HLNotificationCenter defaultCenter] postNotificationName:kNotificationName object:nil userInfo:@{@"cityName":@"NewYork"}];
     
-    dispatch_async(queue, ^{
-        
-        [[HLNotificationCenter defaultCenter] postNotificationName:kNotificationName object:nil userInfo:@{@"cityName":@"NewYork"}];
-
-    });
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.backgroundColor = [UIColor blueColor];
     btn.frame = CGRectMake(0, 0, 100, 40);
